@@ -1,0 +1,1 @@
+git branch -vv|sed -e 's/^\s*\(\*\|\)\s*//g'|awk '$3 ~ /^\[/ && $4 != "gone]" {print $1 " " substr($3, 2, length($3) - 2)}'|sed -e 's/\s\([^\/]*\)\/\(.*\)$/ \1 \2/g'|awk '{git checkout $1; git pull $2}'
